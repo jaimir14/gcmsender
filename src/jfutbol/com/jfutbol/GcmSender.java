@@ -34,10 +34,10 @@ public class GcmSender {
 
     public static final String API_KEY = "AIzaSyDdTSuVxzgo_5kMBILO96LDdxPjyRXT6cU";
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/social_match";
+    static final String DB_URL = "jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/heroku_d6467fbeb5b99b3";
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "12345";
+    static final String USER = "bb610dee688b62";
+    static final String PASS = "ec60664e";
 
     public static void main(String[] args) {
 
