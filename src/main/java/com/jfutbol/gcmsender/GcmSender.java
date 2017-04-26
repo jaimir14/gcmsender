@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jfutbol.com.jfutbol;
+package com.jfutbol.gcmsender;
 
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
