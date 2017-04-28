@@ -34,7 +34,7 @@ public class GcmSender {
 
     public static final String API_KEY = "AIzaSyDdTSuVxzgo_5kMBILO96LDdxPjyRXT6cU";
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://nt71li6axbkq1q6a.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/dhcgqhdy14b0gvt3";
+    static final String DB_URL = "jdbc:mysql://nt71li6axbkq1q6a.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dhcgqhdy14b0gvt3";
     //  Database credentials
     static final String USER = "mb6u49ef19m2p9gl";
     static final String PASS = "xqbw0lfr1zkttj4d";
