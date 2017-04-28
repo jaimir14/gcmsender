@@ -181,7 +181,7 @@ public class GcmSender {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "UPDATE social_match.notifications SET sentByGCM=1 WHERE userId="+userId;
+            sql = "UPDATE notifications SET sentByGCM=1 WHERE userId="+userId;
             int rs = stmt.executeUpdate(sql);
             //STEP 5: Extract data from result set
             if (rs > 0) {
