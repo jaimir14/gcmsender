@@ -74,9 +74,11 @@ public class GcmSender {
                 conn.close();
             } catch (SQLException se) {
                 //Handle errors for JDBC
+            	System.err.println(se.getMessage());
                 se.printStackTrace();
             } catch (Exception e) {
                 //Handle errors for Class.forName
+            	System.err.println(e.getMessage());
                 e.printStackTrace();
             } finally {
                 //finally block used to close resources
@@ -84,17 +86,20 @@ public class GcmSender {
                     if (stmt != null)
                         stmt.close();
                 } catch (SQLException se2) {
+                	System.err.println(se2.getMessage());
                 }// nothing we can do
                 try {
                     if (conn != null)
                         conn.close();
                 } catch (SQLException se) {
+                	System.err.println(se.getMessage());
                     se.printStackTrace();
                 }//end finally try
             }//end try
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
+            	System.err.println(e.getMessage());
                 e.printStackTrace();
             }
         }while (1!=0);
@@ -161,6 +166,8 @@ public class GcmSender {
             System.out.println("Unable to send GCM message.");
             System.out.println("Please ensure that API_KEY has been replaced by the server " +
                     "API key, and that the device's registration token is correct (if specified).");
+
+        	System.err.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -192,9 +199,11 @@ public class GcmSender {
             conn.close();
         } catch (SQLException se) {
             //Handle errors for JDBC
+        	System.err.println(se.getMessage());
             se.printStackTrace();
         } catch (Exception e) {
             //Handle errors for Class.forName
+        	System.err.println(e.getMessage());
             e.printStackTrace();
         } finally {
             //finally block used to close resources
@@ -202,11 +211,13 @@ public class GcmSender {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+            	System.err.println(se2.getMessage());
             }// nothing we can do
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
+            	System.err.println(se.getMessage());
                 se.printStackTrace();
             }//end finally try
         }//end try
