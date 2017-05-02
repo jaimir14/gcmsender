@@ -43,7 +43,7 @@ public class GcmSender {
 	static final String PASS = "xqbw0lfr1zkttj4d";
 
 	public static void main(String[] args) {
-
+		log.info("GCM - Sender running");
 		do {
 
 			Connection conn = null;
