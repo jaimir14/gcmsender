@@ -47,7 +47,9 @@ public class GcmSender {
 		do {
 
 			Connection conn = null;
+			Connection conn2 = null;
 			Statement stmt = null;
+			Statement stmt2 = null;
 
 			try {
 				// STEP 2: Register JDBC driver
@@ -55,18 +57,27 @@ public class GcmSender {
 				// STEP 3: Open a connection
 				// System.out.println("Connecting to database...");
 				conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				conn2 = DriverManager.getConnection(DB_URL, USER, PASS);
 				// STEP 4: Execute a query
 				// System.out.println("Creating statement...");
 				stmt = conn.createStatement();
 				String sql;
-				sql = "SELECT userId, COUNT(id) notificationCounter FROM notifications WHERE sentByGCM=0 GROUP BY userId";
+				sql = "SELECT userId FROM notifications WHERE sentByGCM=0 GROUP BY userId";
 				ResultSet rs = stmt.executeQuery(sql);
 				// STEP 5: Extract data from result set
 				while (rs.next()) {
 					log.info("Notification found");
-					// Retrieve by column name
 					int userId = rs.getInt("userId");
-					int notificationCounter = rs.getInt("notificationCounter");
+					
+					stmt2 = conn2.createStatement();
+					String sql2;
+				    sql2 = "SELECT COUNT(id) notificationCounter FROM notifications WHERE status=0 AND userId=" + userId;
+				    ResultSet rs2 = stmt2.executeQuery(sql2);
+					int notificationCounter = rs2.getInt("notificationCounter");
+					rs2.close();
+				    stmt2.close();
+					// Retrieve by column name
+					
 					// Display values
 					// System.out.print("userId: " + userId);
 					// System.out.print(", notificationCounter: " +
@@ -77,6 +88,7 @@ public class GcmSender {
 				rs.close();
 				stmt.close();
 				conn.close();
+				conn2.close();
 			} catch (SQLException se) {
 				// Handle errors for JDBC
 				log.error(se.getMessage());
